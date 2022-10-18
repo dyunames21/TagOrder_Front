@@ -2,12 +2,6 @@
   "name": "tagorrrderrr",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "webpack-dev-server --mode development",
-    "dev:netlify": "netlify dev",
-    "build": "webpack --mode production",
-    "lint": "eslint --fix --ext .js,.vue"
-  },
   "dependencies": {
     "axios": "^0.27.2",
     "body-parser": "^1.20.0",
