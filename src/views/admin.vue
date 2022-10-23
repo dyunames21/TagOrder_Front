@@ -1,5 +1,13 @@
 <template>
 
+    <div class =nav>
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="/seller" class="nav-link px-2 link-dark">현재 주문 리스트</a></li>
+        <li><a href="/orderdata" class="nav-link px-2 link-dark">전체 주문 조회</a></li>
+        <li><a href="#" class="nav-link px-2 link-secondary">메뉴 관리</a></li>
+      </ul>
+    </div>
+
   <div class="black-bg" v-if="CreateIsOpen==true">
     <div class="white-bg">
       <i class="fa fa-times-circle" aria-hidden="true" v-on:click="CreateIsOpen=false"></i>
@@ -72,7 +80,7 @@
         </thead>
         <tbody >
           <tr v-for="item in state.items">
-            <td><img :src="item.imgPath"/></td>
+            <td><img :src="item.imgpath"/></td>
             <td>{{ item.name }}</td>
             <td>{{ item.price }} 원</td>
             <td class="option">
@@ -203,16 +211,23 @@ div {
 .black-bg {
   width: 100%; height:100%;
   background: rgba(0,0,0,0.5);
-  position: fixed; padding: 20px;
+  position: fixed; top: 0; right: 0;
+  padding-top: 80px;
+  z-index: 2;
 }
 .white-bg {
-  width: 100%; background: white;
+  width: 50%; background: white;
   border-radius: 8px;
   padding: 20px;
+  margin:auto;
 }
 .fa-times-circle{
   float: right;
 }
+.nav{
+  margin: auto;
+  padding-top: 10px;
 
+}
 
 </style>

@@ -7,6 +7,7 @@ import Order from "@/views/Order"
 import Orders from "@/views/Orders"
 import Admin from "@/views/admin";
 import Seller from "@/views/Seller";
+import OrderData from '@/views/OrderData'
 import {createRouter, createWebHistory} from "vue-router";
 
 const routes=[
@@ -18,7 +19,9 @@ const routes=[
   {path:'/order', component: Order},
   {path:'/orders', component: Orders},
   {path:'/admin',component: Admin},
-  {path:'/seller',component: Seller}
+  {path:'/seller',component: Seller},
+  {path:'/orderdata',component: OrderData}
+
 
 ]
 

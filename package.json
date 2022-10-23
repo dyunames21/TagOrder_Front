@@ -56,7 +56,7 @@
     "dev": "webpack-dev-server --mode development",
     "dev:netlify": "netlify dev",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "node build/build.js",
     "lint": "vue-cli-service lint",
     "dev": "vue-cli-service serve",
     "build:prod": "vue-cli-service build",

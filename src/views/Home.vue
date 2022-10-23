@@ -1,5 +1,7 @@
 <template>
   <div class="home">
+
+
     <div class="album py-5 bg-light">
       <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -30,6 +32,12 @@ export default {
       state.items=res.data
     })
     return {state}
+  },
+
+  data(){
+    return{
+      ItemIsOpen : false
+    }
   }
 
 };
@@ -41,6 +49,7 @@ export default {
 .col{
   width: 240px;
 }
+
 
 
 </style>

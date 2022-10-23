@@ -108,6 +108,7 @@ export default {
         resultName += i.name
         resultName += " "
       }
+      let resultUid="";
 
 
       //1. 객체 초기화 (가맹점 식별코드 삽입)
@@ -128,15 +129,16 @@ export default {
           //ajax 서버 통신 구현 -> 5. 서버사이드에서 validation check
           //6. 최종 서버 응답 클라이언트에서 단계 4.에서 보낸 서버사이드 응답 에따라 결제 성공 실패 출력
           var msg = '결제가 완료되었습니다.';
+          resultUid=rsp.merchant_uid
           msg += '고유ID : ' + rsp.imp_uid;
-          msg += '상점 거래ID : ' + rsp.merchant_uid;
+          msg += '상점 거래ID : ' + resultUid;
           msg += '결제 금액 : ' + rsp.paid_amount;
           msg += '카드 승인번호 : ' + rsp.apply_num;
 
-          state.form.Uid = rsp.merchant_uid;
 
           const args = JSON.parse(JSON.stringify(state.form));
           args.items = JSON.stringify(state.items);
+          args.Uid = resultUid;
 
           alert(msg);
 

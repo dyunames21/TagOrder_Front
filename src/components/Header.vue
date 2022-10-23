@@ -3,18 +3,15 @@
     <div class="collapse bg-dark" id="navbarHeader">
       <div class="container">
         <div class="row" v-if="$store.state.account.id">
-            <ul class="list-unstyled">
-              <li>
-                <router-link to="/home" class="text-white">메인 화면</router-link>
-              </li>
-              <li v-if="$store.state.account.id">
-                <router-link to="/orders" class="text-white">주문 내역</router-link>
-              </li>
-              <li>
-                <router-link to="/login" class="text-white" v-if="!$store.state.account.id">로그인</router-link>
-                <a to="/login" class="text-white" @click="logout()" v-else>로그아웃</a>
-              </li>
-            </ul>
+          <div class="container">
+            <header class="d-flex justify-content-center py-3">
+              <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/orders" class="nav-link">주문 기록</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">쿠폰</a></li>
+                <li class="nav-item"><a class="nav-link" @click="logout()">로그아웃</a></li>
+              </ul>
+            </header>
+          </div>
         </div>
       </div>
     </div>
@@ -69,7 +66,6 @@ header .navbar .cart{
 .container{
   margin-left: 30px;
 }
-
 
 
 

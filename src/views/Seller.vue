@@ -1,35 +1,38 @@
 <template>
   <div class="orders">
-    <div class="container">
-      <table class="table table-bordered">
-        <thead>
-        <tr>
-          <th>주문 번호</th>
-          <th>주문자 성명</th>
-          <th>주문 메뉴</th>
-          <th>주문일</th>
-          <th>주문 완료</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="(o, idx1) in state.orders" :key="idx1">
-          <td>{{ state.orders.length - idx1 }}</td>
-          <td>{{o.name}}</td>
-          <td>
-            <div v-for="(i, idx2) in o.items" :key="idx2">{{ i.name }} * {{i.many}}</div>
-          </td>
-          <td>
-            <div>{{o.date}}</div>
-          </td>
-          <td>
-            <button class= "btn btn-primary" @click="OrderCom(o.id)">완료하기</button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+    <div class ="nav">
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="#" class="nav-link px-2 link-secondary">현재 주문 리스트</a></li>
+        <li><a href="/orderdata" class="nav-link px-2 link-dark">전체 주문 조회</a></li>
+        <li><a href="/admin" class="nav-link px-2 link-dark">메뉴 관리</a></li>
+      </ul>
     </div>
+
+    <div class="container">
+
+      <div class="orderCard" v-for="(o, idx1) in state.orders" :key="idx1">
+        <div class="text-center">
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">{{idx1 }}</h4>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title pricing-card-title">{{o.name}}</h2>
+                <div>{{o.date}}</div>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <div v-for="(i, idx2) in o.items" :key="idx2">{{ i.name }} * {{i.many}}</div>
+                </ul>
+                <button type="button" class="w-100 btn btn-lg btn-outline-primary" @click="OrderCom(o.id)" >완료하기</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
   </div>
+  </div>
+
 </template>
 
 
@@ -76,5 +79,26 @@ export default {
 th, td {
   text-align: center;
 }
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.orderCard{
+  width: 300px;
+  display: inline-block;
+  margin: 10px;
+}
+
+.nav{
+  margin: auto;
+  padding-top: 10px;
+
+}
+
 
 </style>
