@@ -8,5 +8,5 @@ import router from "@/scripts/router";
 
 
 createApp(App).use(router).use(store).mount("#app");
-axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = "http://vuetag.s3-website.ap-northeast-2.amazonaws.com/";
 global.$ = jQuery;

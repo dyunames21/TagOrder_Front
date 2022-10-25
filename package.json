@@ -58,7 +58,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "yarn build && npm aws s3 sync ./dist s3://vuetag",
+    "deploy": "aws s3 sync ./dist s3://vuetag/",
     "dev": "vue-cli-service serve",
     "build:prod": "vue-cli-service build",
     "build:stage": "vue-cli-service build --mode staging",
