@@ -9,7 +9,7 @@
 
         <div class="item-form">
 
-          <img class="item-img" :src="item.imgpath"/>
+          <img class="item-img" style="width:250px" :src="item.imgpath"/>
 
           <div class="card-body">
 
@@ -45,10 +45,10 @@
 
 
 
-  <button class="item-btn" v-on:click="CardIsOpen=true">
-      <div class="card shadow-sm">
+  <button class="item-btn" v-on:click="CardIsOpen=true" style="height: 300px">
+      <div class="card shadow-sm" style="height: 300px">
 
-        <img class="item-img" :src="item.imgpath"/>
+        <img class="item-img" style="height: 200px" :src="item.imgpath"/>
         <div class="card-body">
           <span class="card-text" style="margin-right: 10px">{{item.name}}</span>
           <small>{{ item.price }}원</small>

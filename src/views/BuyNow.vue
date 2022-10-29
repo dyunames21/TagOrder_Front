@@ -1,13 +1,5 @@
 <template>
-  <div class="orders">
-    <div class ="nav">
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><router-link to="#" class="nav-link px-2 link-secondary">현재 주문 리스트</router-link></li>
-        <li><router-link to="/orderdata" class="nav-link px-2 link-dark">전체 주문 조회</router-link></li>
-        <li><router-link to="/admin" class="nav-link px-2 link-dark">메뉴 관리</router-link></li>
-      </ul>
-    </div>
-
+  <div class="BuyNow">
     <div class="container">
 
       <div class="orderCard" v-for="(o, idx1) in state.orders" :key="idx1">
@@ -15,7 +7,7 @@
           <div class="col">
             <div class="card mb-4 rounded-3 shadow-sm">
               <div class="card-header py-3">
-                <h4 class="my-0 fw-normal">{{idx1}}</h4>
+                <h4 class="my-0 fw-normal">{{idx1 }}</h4>
               </div>
               <div class="card-body">
                 <h2 class="card-title pricing-card-title">{{o.name}}</h2>
@@ -23,15 +15,16 @@
                 <ul class="list-unstyled mt-3 mb-4">
                   <div v-for="(i, idx2) in o.items" :key="idx2">{{ i.name }} * {{i.many}}</div>
                 </ul>
-                <button type="button" class="w-100 btn btn-lg btn-outline-primary" @click="OrderCom(o.id)" >완료하기</button>
+                <button type="button" class="w-100 btn btn-lg btn-outline-primary" @click="OrderCen()" >취소하기</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
+  </div>
 
-  </div>
-  </div>
+
 
 </template>
 
@@ -41,13 +34,12 @@ import {computed, reactive} from "vue";
 import axios from "axios";
 
 export default {
+
   setup() {
     const state = reactive({
       orders: [],
     })
-
-     //load 하는 이유?
-    axios.get("/api/seller/orders").then(({data}) => {
+    axios.get("/api/nowOrders").then(({data}) => {
       state.orders = [];
 
       for (let d of data) {
@@ -58,13 +50,12 @@ export default {
       }
     })
 
-    const OrderCom = (orderId) => {
-      axios.post(`/api/seller/orders/${orderId}`).then(() => {
+    const OrderCen = (orderId) => {
+      axios.post(`/api`).then(() => {
         alert("success")
       })
     }
-
-    return {state,OrderCom}
+    return {state,OrderCen}
   }
 }
 </script>

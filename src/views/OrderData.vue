@@ -2,9 +2,9 @@
   <div class="orderData">
     <div class =nav>
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/seller" class="nav-link px-2 link-dark">현재 주문 리스트</a></li>
-        <li><a href="#" class="nav-link px-2 link-secondary">전체 주문 조회</a></li>
-        <li><a href="/admin" class="nav-link px-2 link-dark">메뉴 관리</a></li>
+        <li><router-link to="/seller" class="nav-link px-2 link-dark">현재 주문 리스트</router-link></li>
+        <li><router-link to="#" class="nav-link px-2 link-secondary">전체 주문 조회</router-link></li>
+        <li><router-link to="/admin" class="nav-link px-2 link-dark">메뉴 관리</router-link></li>
       </ul>
     </div>
 

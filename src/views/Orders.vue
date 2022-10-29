@@ -55,19 +55,17 @@ export default {
       }
     })
 
+
     const transOrder = () =>{
       axios.get("/api/orders").then(({data}) =>{
         for (let d of data) {
           if (d.finished) {
-            this.finish += "주문완료"
+            this.finish=1
           }else{
-            this.finish +="주문 진행중"
+            this.finish=2
           }
-
         }
-
       })
-
     }
 
 

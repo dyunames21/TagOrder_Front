@@ -2,9 +2,9 @@
 
     <div class =nav>
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/seller" class="nav-link px-2 link-dark">현재 주문 리스트</a></li>
-        <li><a href="/orderdata" class="nav-link px-2 link-dark">전체 주문 조회</a></li>
-        <li><a href="#" class="nav-link px-2 link-secondary">메뉴 관리</a></li>
+        <li><router-link to="/seller" class="nav-link px-2 link-dark">현재 주문 리스트</router-link></li>
+        <li><router-link to="/orderdata" class="nav-link px-2 link-dark">전체 주문 조회</router-link></li>
+        <li><router-link to="#" class="nav-link px-2 link-secondary">메뉴 관리</router-link></li>
       </ul>
     </div>
 
@@ -23,12 +23,11 @@
               <input type="number" class="form-control" id="price" placeholder="가격 입력" v-model="state.form.price">
             </div>
               <div class="form-group" style="margin:20px">
-                <label for="img_path">메뉴 이미지 추가</label>
-                <div></div>
-                <input type="file" class="form-control-file" id="img_path">
+                <label for="uploadFile" class="form-label">파일첨부</label>
+                <input name="uploadFile" v-on:change="changeFile" type="file" id="imgpath"/>
               </div>
             <div></div>
-            <button type="submit" class="btn btn-primary" @click="submit()">Submit</button>
+            <button type="submit" class="btn btn-primary" v-on:click="save">Submit</button>
           </form>
 
         </div>
@@ -52,8 +51,11 @@
           <div class="form-group" style="margin:20px">
             <label for="img_path">메뉴 이미지 변경</label>
             <div></div>
-            <input type="file" class="form-control-file" id="img_path">
+            <label for="uploadFile" class="form-label">파일첨부</label>
+            <input name="uploadFile" v-on:change="changeFile" type="file" class="form-control-file" id="imgpath" multiple="multiple"/>
+
           </div>
+
           <div></div>
           <button type="submit" class="btn btn-primary" @click="edit(editItem.id)">Submit</button>
         </form>
@@ -80,7 +82,7 @@
         </thead>
         <tbody >
           <tr v-for="item in state.items">
-            <td><img :src="item.imgpath"/></td>
+            <td><img style="width: 100px" :src="item.imgpath"/></td>
             <td>{{ item.name }}</td>
             <td>{{ item.price }} 원</td>
             <td class="option">
@@ -116,7 +118,7 @@ export default {
       form: {
         name: "",
         price: "",
-        img_path:""
+        uploadFile:""
       },
     })
     const load = () => {
@@ -154,18 +156,65 @@ export default {
       })
     };
 
+    const changeFile = (e) =>{
+      state.form.uploadFile = e.target.files[0];
+      console.log(e.target.files);
+    }
 
-    load();
+    const save= ()=>{
+      var formData = new FormData();
+      formData.append('name',state.form.name)
+      formData.append('price',state.form.price)
+      formData.append('uploadFile',state.form.uploadFile)
 
-    return {state, submit, remove, edit}
+
+      axios.post("/api/addItemSet",formData,{
+        headers:{
+          'Content-Type': 'multipart/form-data'
+        }});
+
+      for (var pair of formData.entries()) {
+        console.log(pair[0] + ', ' + pair[1]);
+      };
+
+      router.push({path: "/admin"});
+
+    }
+
+
+
+
+
+
+    return {state, submit, remove, edit, changeFile: changeFile, save}
   },
 
+  methods: {
+      fileSelect(){
+        console.log(this.$refs),
+        this.ItemImage = this.$refs.ItemImage.files[0];
+      },
+
+
+      SetMenuImg(){
+        const formData = new FormData();
+        const photoFile = document.getElementById("profile-img-edit")
+        formData.append("profile-img-edit", photoFile.files[0])
+        axios.post("/api/item/addImg",formData,{
+          headers:{
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+        console.log(formData);
+      }
+    },
 
   data(){
     return{
       CreateIsOpen : false,
       EditIsOpen : false,
       editItem: "",
+      ItemImage : '',
     }
   }
 

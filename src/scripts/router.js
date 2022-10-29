@@ -9,6 +9,7 @@ import Admin from "@/views/admin";
 import Seller from "@/views/Seller";
 import OrderData from '@/views/OrderData'
 import {createRouter, createWebHistory} from "vue-router";
+import BuyNow from '@/views/BuyNow'
 
 const routes=[
   {path:'/', component:Cover},
@@ -20,7 +21,8 @@ const routes=[
   {path:'/orders', component: Orders},
   {path:'/admin',component: Admin},
   {path:'/seller',component: Seller},
-  {path:'/orderdata',component: OrderData}
+  {path:'/orderdata',component: OrderData},
+  {path: '/BuyNow',component: BuyNow}
 
 
 ]
