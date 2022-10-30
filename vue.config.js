@@ -8,9 +8,8 @@ module.exports ={
   lintOnSave: false,
   devServer: {
     proxy: {
-
       '/api':{
-        target: ' 3.39.78.87:9000/',
+        target: '3.39.78.87:9000',
         changeOrigin: true,
         pathRewrite: {
           '^/': ''
