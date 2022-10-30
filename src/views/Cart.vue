@@ -4,11 +4,11 @@
       <ul>
         <li v-for="(i,idx) in state.items" :key="idx">
 
-          <img :src="i.imgpath"/>
-          <span class="name">{{i.name}}</span>
-          <span class="price">{{i.price}}</span>
-          <span class="count" style="margin-left: 50px">{{i.many}}개</span>
-          <i class="fa fa-trash" @click="remove(i.id)"></i>
+          <img style="width: 30%" :src="i.imgpath"/>
+          <span class="name" style="margin-left: 10px">{{i.name}}</span>
+          <span class="price" style="margin-left: 10px">{{i.price}}원</span>
+          <span class="count" style="margin-left: 10px">{{i.many}}개</span>
+          <i class="fa fa-trash" style="margin-right: 15px" @click="remove(i.id)"></i>
 
         </li>
       </ul>

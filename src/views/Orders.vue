@@ -6,7 +6,7 @@
         <tr>
           <th>주문 항목</th>
           <th>주문일</th>
-          <th>주문진행</th>
+          <th>주문완료</th>
         </tr>
         </thead>
         <tbody>

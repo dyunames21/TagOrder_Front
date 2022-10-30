@@ -32,6 +32,8 @@
 
   </div>
   </div>
+  <button style="margin-left: 30px " type="button" class="btn btn-link" @click="payCheck()">주문 취소하러 가기</button>
+
 
 </template>
 
@@ -40,7 +42,16 @@
 import {computed, reactive} from "vue";
 import axios from "axios";
 
+
+
 export default {
+
+  methods: {
+    payCheck(){
+      window.open("https://classic-admin.iamport.kr/payments", "_blank");
+    }
+  },
+
   setup() {
     const state = reactive({
       orders: [],

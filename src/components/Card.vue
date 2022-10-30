@@ -45,17 +45,16 @@
 
 
 
-  <button class="item-btn" v-on:click="CardIsOpen=true" style="height: 300px">
-      <div class="card shadow-sm" style="height: 300px">
+  <button class="item-btn" v-on:click="CardIsOpen=true" style="width: 100%;height: 180px">
+    <div class="card shadow-sm" style="width: 100%; height: 180px">
 
-        <img class="item-img" style="height: 200px" :src="item.imgpath"/>
-        <div class="card-body">
-          <span class="card-text" style="margin-right: 10px">{{item.name}}</span>
-          <small>{{ item.price }}원</small>
-          </div>
+      <img class="item-img" style="width:100%; height: 70%" :src="item.imgpath"/>
+      <div class="card-body" style="padding: 0">
+        <p class="card-text" style="margin-bottom: 2px;">{{item.name}}</p>
+        <small>{{ item.price }}원</small>
       </div>
+    </div>
   </button>
-
 
 
 
