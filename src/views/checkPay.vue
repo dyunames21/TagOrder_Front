@@ -1,6 +1,7 @@
 <template>
 
-  <div style="height: 20px"></div>
+  <div class="checkPay">
+  <div class="checkPay" style="height: 20px"></div>
   <div class="container">
     <div class="orderCard">
       <div class="text-center">
@@ -41,6 +42,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 
 </template>

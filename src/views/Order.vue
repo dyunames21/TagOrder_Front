@@ -122,7 +122,7 @@ export default {
         amount: resultPrice,
         buyer_name: state.form.name,
         buyer_tel: state.form.phone,
-        m_redirect_url: " 3.39.78.87/checkPay"
+        m_redirect_url: "http://3.39.78.87/checkPay"
         //주문 완료시
       }, function (rsp) {
         if (rsp.success) {
