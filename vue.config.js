@@ -9,7 +9,7 @@ module.exports ={
   devServer: {
     proxy: {
       '/api':{
-        target: 'http://3.39.78.87:9000',
+        target: 'http://3.39.78.87:9000', //http://tagorder.tk:9000 http://3.39.78.87:9000
         changeOrigin: true,
         pathRewrite: {
           '^/': ''
