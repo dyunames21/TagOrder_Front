@@ -122,7 +122,7 @@ export default {
         amount: resultPrice,
         buyer_name: state.form.name,
         buyer_tel: state.form.phone,
-        m_redirect_url: "http://3.39.78.87:9000/checkPay" //http://http://tagorder.tk:9000
+        m_redirect_url: "http://localhost:9000/checkPay" //http://http://tagorder.tk:9000
         //주문 완료시
       }, function (rsp) {
         if (rsp.success) {
