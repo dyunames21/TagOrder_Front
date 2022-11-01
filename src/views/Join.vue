@@ -55,7 +55,7 @@ export default {
       const args = JSON.parse(JSON.stringify(state.form));
       args.member = JSON.stringify(state.member);
       event.preventDefault();
-      axios.post("api/account/join", args).then(() => {
+      axios.post("/api/account/join", args).then(() => {
         router.push("/login")
         alert('가입 완료, 가입하신 아이디로 로그인해주세요');
       })
