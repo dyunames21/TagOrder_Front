@@ -10,6 +10,16 @@
 
     <div class="container">
 
+      <div>
+        <button class="btn btn-danger btn-sm" @click="stop_auto_reload" v-if="auto_reload == true">
+          <i class="fa fa-stop" aria-hidden="true"></i> 정지
+        </button>
+        <button class="btn btn-primary btn-sm" @click="start_auto_reload" v-if="auto_reload == false">
+          <i class="fa fa-play" aria-hidden="true"></i>시작
+        </button>
+      </div>
+
+
       <div class="orderCard" v-for="(o, idx1) in state.orders" :key="idx1">
         <div class="text-center">
           <div class="col">
@@ -49,7 +59,20 @@ export default {
   methods: {
     payCheck(){
       window.open("https://classic-admin.iamport.kr/payments", "_blank");
-    }
+      },
+    start_auto_reload() {
+      console.log('start!!');
+      this.auto_reload = true;
+      this.auto_reload_func = setInterval(() => {
+        this.reload_order()
+      }, this.auto_reload_delay)
+    },
+    stop_auto_reload() {
+      console.log('stop!!');
+      this.auto_reload = false;
+      clearInterval(this.auto_reload_func);
+    },
+
   },
 
   setup() {
@@ -57,7 +80,7 @@ export default {
       orders: [],
     })
 
-     //load 하는 이유?
+
     axios.get("/api/seller/orders").then(({data}) => {
       state.orders = [];
 
@@ -71,13 +94,34 @@ export default {
 
     const OrderCom = (orderId) => {
       axios.post(`/api/seller/orders/${orderId}`).then(() => {
+        window.location.reload(true);
         alert("success")
       })
     }
 
+    const reload_order = () => {
+      axios.get("/api/seller/orders").then(({data}) => {
+        state.orders = [];
+
+        for (let d of data) {
+          if (d.items) {
+            d.items = JSON.parse(d.items);
+          }
+          state.orders.push(d);
+        }
+      })
+    }
 
 
-    return {state,OrderCom}
+    return {state,OrderCom,reload_order }
+  },
+
+  data(){
+    return{
+      auto_reload: false,
+      auto_reload_delay:3*1000,
+      auto_reload_func: null
+    }
   }
 }
 </script>

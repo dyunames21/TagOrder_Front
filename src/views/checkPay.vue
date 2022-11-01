@@ -126,10 +126,12 @@ export default {
       const args = JSON.parse(JSON.stringify(state.form));
       args.items = JSON.stringify(state.items);
       axios.post("/api/orders", args).then(() => {
+        alert("주문이 접수되었습니다. 주문이 완료되면 문자가 발송됩니다.")
         router.push({path: "/orders"});
       })
-
     }
+
+
 
     return{state,accept}
   }

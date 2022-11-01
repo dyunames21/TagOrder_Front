@@ -6,7 +6,7 @@
         <form class="validation-form" novalidate>
           <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="name">이름</label>
+              <label for="name">id</label>
               <input type="text" class="form-control" id="name" placeholder="" v-model="state.form.name" required>
               <div class="invalid-feedback">
                 이름을 입력해주세요.
@@ -28,7 +28,7 @@
             </div>
           </div>
           <div class="mb-4"></div>
-          <button class="btn btn-primary btn-lg btn-block" type="submit" @click="submit">가입 하기</button>
+          <button class="btn btn-primary btn-lg btn-block" type="submit" @click="submit()">가입 하기</button>
         </form>
       </div>
     </div>
@@ -54,8 +54,9 @@ export default {
     const submit = () => {
       const args = JSON.parse(JSON.stringify(state.form));
       args.member = JSON.stringify(state.member);
-      axios.post("/api/account/join", args).then(() => {
-        router.push({path: "/login"});
+      event.preventDefault();
+      axios.post("api/account/join", args).then(() => {
+        router.push("/login")
         alert('가입 완료, 가입하신 아이디로 로그인해주세요');
       })
     };

@@ -171,15 +171,13 @@ export default {
       axios.post("/api/addItemSet",formData,{
         headers:{
           'Content-Type': 'multipart/form-data'
-        }});
-
-      for (var pair of formData.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
-      };
-
-      router.push({path: "/admin"});
-
+        }}).then(()=>{
+        alert('메뉴추가 완료');
+        window.location.reload(true);
+      });
     }
+
+
 
 
 
@@ -215,6 +213,7 @@ export default {
       EditIsOpen : false,
       editItem: "",
       ItemImage : '',
+
     }
   }
 

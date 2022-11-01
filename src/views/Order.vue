@@ -46,6 +46,9 @@
                          id="phone"
                          v-model="state.form.phone">
                 </div>
+                <small style="margin: 10px 0 30px 0">
+                  핸드폰 번호는 저장되지 않고 문자서비스에만 이용됩니다.
+                </small>
               </div>
               <div>
                 &nbsp;
@@ -122,7 +125,7 @@ export default {
         amount: resultPrice,
         buyer_name: state.form.name,
         buyer_tel: state.form.phone,
-        m_redirect_url: "http://localhost:9000/checkPay" //http://http://tagorder.tk:9000
+        m_redirect_url: "http://3.39.78.87:9000/checkPay" //http://http://tagorder.tk:9000
         //주문 완료시
       }, function (rsp) {
         if (rsp.success) {
